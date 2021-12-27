@@ -1,0 +1,16 @@
+{
+    "hoan_student": {
+        "column": {
+            "student_id": true,
+            "student_name": true,
+            "student_birthday": true,
+            "student_img": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "HOAN_STUDENT_STUDENT_ID": true
+        }
+    }
+}
