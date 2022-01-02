@@ -30,7 +30,7 @@ class StudentRepository implements StudentRepositoryInterface
     private $searchResultsFactory;
 
     /**
-     * @param Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface
+     * @param \Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface
      */
     private $collectionProcessor;
 
@@ -39,7 +39,7 @@ class StudentRepository implements StudentRepositoryInterface
         \Hoan\Student\Model\StudentFactory $studentFactory,
         \Hoan\Student\Model\ResourceModel\Student\CollectionFactory $studentCollectionFactory,
         \Hoan\Student\Api\Data\StudentSearchResultsInterfaceFactory $searchResultsFactory,
-        Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface $collectionProcessor = null
+        \Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface $collectionProcessor = null
     )
     {
         $this->resource = $resource;

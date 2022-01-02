@@ -1,0 +1,190 @@
+<?xml version="1.0" ?>
+<!--
+    see magento-ui/view/base/ui_component/etc/definition.xml listing tag
+    class = PHP class to process & prepare data
+    component = js-module to render UI
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <!-- argument is aruguments to initializing an object (__construct) of above PHP class -->
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <!-- <uiComponent name>.<dataSource name> -->
+            <item name="provider" xsi:type="string">student_listing.student_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+		<spinner>student_columns</spinner>
+		<deps>
+			<dep>student_listing.student_listing_data_source</dep>
+		</deps>
+		<buttons>
+			<button name="add">
+				<url path="*/*/create"/>
+				<class>primary</class>
+				<label translate="true">Add New Student</label>
+			</button>
+		</buttons>
+	</settings>
+    <!-- component = js-module initializing the localStorage -->
+    <dataSource name="student_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="dataScope" xsi:type="string">filters.store_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Hoan_Student::student</aclResource>
+        <!-- class = PHP class to process data -->
+        <dataProvider class="Hoan\Student\Ui\DataProvider\StudentDataProvider" name="student_listing_data_source">
+            <settings>
+                <!-- enables the AJAX URL used by the grid -->
+                <requestFieldName>id</requestFieldName>
+                <!-- primary key of database -->
+                <primaryFieldName>student_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <!-- <filters name="listing_filters">
+            <filterSelect name="store_id" provider="${ $.parentName }">
+                <settings>
+                    <options class="Magento\Store\Ui\Component\Listing\Column\Store\Options"/>
+                    <caption translate="true">All Store Views</caption>
+                    <label translate="true">Store View</label>
+                    <dataScope>store_id</dataScope>
+                </settings>
+            </filterSelect>
+        </filters>
+        <massaction name="listing_massaction"
+                    component="Magento_Ui/js/grid/tree-massactions"
+                    class="\Magento\Catalog\Ui\Component\Product\MassAction">
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Delete selected items?</message>
+                        <title translate="true">Delete items</title>
+                    </confirm>
+                    <url path="catalog/product/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+            <action name="status">
+                <settings>
+                    <type>status</type>
+                    <label translate="true">Change status</label>
+                    <actions>
+                        <action name="0">
+                            <type>enable</type>
+                            <label translate="true">Enable</label>
+                            <url path="catalog/product/massStatus">
+                                <param name="status">1</param>
+                            </url>
+                        </action>
+                        <action name="1">
+                            <type>disable</type>
+                            <label translate="true">Disable</label>
+                            <url path="catalog/product/massStatus">
+                                <param name="status">2</param>
+                            </url>
+                        </action>
+                    </actions>
+                </settings>
+            </action>
+            <action name="attributes">
+                <settings>
+                    <url path="catalog/product_action_attribute/edit"/>
+                    <type>attributes</type>
+                    <label translate="true">Update attributes</label>
+                </settings>
+            </action>
+        </massaction> -->
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="student_columns">
+        <settings>
+            <!-- <editorConfig>
+                <param name="clientConfig" xsi:type="array">
+                    <item name="saveUrl" xsi:type="url" path="cms/block/inlineEdit"/>
+                    <item name="validateBeforeSave" xsi:type="boolean">false</item>
+                </param>
+                <param name="indexField" xsi:type="string">block_id</param>
+                <param name="enabled" xsi:type="boolean">true</param>
+                <param name="selectProvider" xsi:type="string">cms_block_listing.cms_block_listing.cms_block_columns.ids</param>
+            </editorConfig> -->
+            <!-- <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">student_listing.student_listing.student_columns_editor</item>
+                    <item name="target" xsi:type="string">startEdit</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                        <item name="1" xsi:type="boolean">true</item>
+                    </item>
+                </param>
+            </childDefaults> -->
+        </settings>
+        <selectionsColumn name="ids" sortOrder="0">
+            <settings>
+                <indexField>student_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="student_id" sortOrder="10">
+            <settings>
+                <addField>true</addField>
+                <filter>text</filter>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+                <label translate="true">Student Id</label>
+            </settings>
+        </column>
+        <column name="student_name" sortOrder="20">
+            <settings>
+                <addField>true</addField>
+                <filter>text</filter>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+                <label translate="true">Student Name</label>
+            </settings>
+        </column>
+        <column name="student_birthday" sortOrder="30">
+            <settings>
+                <addField>true</addField>
+                <filter>text</filter>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+                <label translate="true">Student Birthday</label>
+            </settings>
+        </column>
+        <column name="student_img" sortOrder="40">
+            <settings>
+                <addField>true</addField>
+                <filter>text</filter>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+                <label translate="true">Student Image</label>
+            </settings>
+        </column>
+        <column name="created_at" sortOrder="50">
+            <settings>
+                <addField>true</addField>
+                <filter>text</filter>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+                <label translate="true">Created Time</label>
+            </settings>
+        </column>
+        <column name="updated_at" sortOrder="60">
+            <settings>
+                <addField>true</addField>
+                <filter>text</filter>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+                <label translate="true">Last Updated</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" sortOrder="200">
+            <settings>
+                <indexField>student_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>
