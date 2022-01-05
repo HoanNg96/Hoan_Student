@@ -1,6 +1,6 @@
 <?php
 
-namespace Hoan\Student\Controller\Test;
+namespace Hoan\Student\Controller\Index;
 
 class Index extends \Magento\Framework\App\Action\Action
 {
@@ -10,27 +10,13 @@ class Index extends \Magento\Framework\App\Action\Action
     protected $_pageFactory;
 
     /**
-     * @param \Hoan\Student\Model\ResourceModel\Student\CollectionFactory
-     */
-    private $collection;
-
-    /**
-     * @param \Hoan\Student\Model\StudentRepository
-     */
-    private $studentRepository;
-
-    /**
      * @param \Magento\Framework\App\Action\Context $context
      */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $pageFactory,
-        \Hoan\Student\Model\ResourceModel\Student\CollectionFactory $collection,
-        \Hoan\Student\Model\StudentRepository $studentRepository
+        \Magento\Framework\View\Result\PageFactory $pageFactory
     ) {
         $this->_pageFactory = $pageFactory;
-        $this->collection = $collection;
-        $this->studentRepository = $studentRepository;
         return parent::__construct($context);
     }
     /**

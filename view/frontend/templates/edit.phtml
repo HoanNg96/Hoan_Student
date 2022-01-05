@@ -1,0 +1,33 @@
+<?php
+
+/** @var \Hoan\Student\Block\Edit $block */
+$student = $block->getCurrentStudent();
+?>
+
+<h3 style="text-align: center;">Edit</h3>
+<form method='POST' action="<?= $block->escapeHtml($block->getBaseUrl()); ?>student/index/save">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" value="<?php if ($student->getStudentName()) :
+                                                                                                            echo $block->escapeHtml($student->getStudentName());
+                                                                                                        endif; ?>">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="brithday">Birthday</label>
+        <input type="date" class="form-control" id="brithday" placeholder="Enter birthday" name="brithday" value="<?php if ($student->getStudentBirthday()) :
+                                                                                                            echo $block->escapeHtml(date('Y-m-d', strtotime($student->getStudentBirthday())));
+                                                                                                        endif; ?>">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="image">Image</label>
+        <input type="text" class="form-control" id="image" placeholder="Enter image" name="image" value="<?php if ($student->getStudentImg()) :
+                                                                                                                    echo $block->escapeHtml($student->getStudentImg());
+                                                                                                                endif; ?>">
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary" name="editbtn" value="<?php if ($student->getStudentId()) :
+                                                                            echo $block->escapeHtml($student->getStudentId());
+                                                                        endif; ?>">Submit</button>
+</form>

@@ -1,0 +1,24 @@
+<?php
+
+/** @var \Hoan\Student\Block\Create $block */
+?>
+
+<h3 style="text-align: center;">Create</h3>
+<form method='POST' action="<?= $block->escapeHtml($block->getBaseUrl()); ?>student/index/save">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="birthday">Birthday</label>
+        <input type="date" class="form-control" id="birthday" placeholder="Enter birthday" name="birthday">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="image">Image</label>
+        <input type="text" class="form-control" id="image" placeholder="Enter image" name="image">
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary" name="createbtn">Submit</button>
+</form>

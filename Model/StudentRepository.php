@@ -167,7 +167,7 @@ class StudentRepository implements StudentRepositoryInterface
         //phpcs:disable Magento2.PHP.LiteralNamespaces
         if (!$this->collectionProcessor) {
             $this->collectionProcessor = \Magento\Framework\App\ObjectManager::getInstance()->get(
-                'Hoan\Student\Model\Api\SearchCriteria\StudentCollectionProcessor'
+                \Hoan\Student\Model\Api\SearchCriteria\StudentCollectionProcessor::class
             );
         }
         return $this->collectionProcessor;

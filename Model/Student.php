@@ -102,7 +102,7 @@ class Student extends \Magento\Framework\Model\AbstractModel implements \Hoan\St
      * @return string|null
      */
     public function getStudentBirthday() {
-        return $this->getData();
+        return $this->getData(self::STUDENT_BIRTHDAY);
     }
 
     /**
