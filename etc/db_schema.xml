@@ -3,7 +3,7 @@
     <table name="hoan_student" resource="default" engine="innodb" comment="Hoan Student">
         <column xsi:type="int" name="student_id" padding="11" unsigned="false" nullable="false" identity="true" comment="Student Id"/>
         <column xsi:type="varchar" name="student_name" nullable="true" default="" comment="Student Name"/>
-        <column xsi:type="datetime" name="student_birthday" nullable="true" comment="Student Birthday"/>
+        <column xsi:type="date" name="student_birthday" nullable="true" comment="Student Birthday"/>
         <column xsi:type="varchar" name="student_img" nullable="true" comment="Student Image"/>
         <column xsi:type="timestamp" name="created_at" nullable="true" default="CURRENT_TIMESTAMP" comment="Created At"/>
         <column xsi:type="timestamp" name="updated_at" nullable="true" default="CURRENT_TIMESTAMP" comment="Updated At"/>
@@ -13,5 +13,8 @@
         <constraint xsi:type="unique" referenceId="REFERENCE_ID">
             <column name="student_id"/>
         </constraint>
+        <index referenceId="HOAN_STUDENT_NAME_INDEX" indexType="fulltext">
+            <column name="student_name"/>
+        </index>
     </table>
 </schema>

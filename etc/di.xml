@@ -5,18 +5,9 @@
     <preference for="Hoan\Student\Api\Data\StudentSearchResultsInterface" type="Hoan\Student\Model\StudentSearchResults" />
     <preference for="Hoan\Student\Api\StudentRepositoryInterface" type="Hoan\Student\Model\StudentRepository" />
 
-    <!-- ... -->
-    <!-- <virtualType name="Hoan\Student\Model\Api\SearchCriteria\CollectionProcessor\StudentFilterProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
-        <arguments>
-            <argument name="customFilters" xsi:type="array">
-                <item name="store_id" xsi:type="object">Magento\Cms\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\StudentStoreFilter</item>
-            </argument>
-        </arguments>
-    </virtualType> -->
     <virtualType name="Hoan\Student\Model\Api\SearchCriteria\StudentCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
         <arguments>
             <argument name="processors" xsi:type="array">
-                <!-- <item name="filters" xsi:type="object">Hoan\Student\Model\Api\SearchCriteria\CollectionProcessor\StudentFilterProcessor</item> -->
                 <item name="sorting" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>
                 <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
             </argument>
@@ -25,7 +16,6 @@
     <type name="Hoan\Student\Model\StudentRepository">
         <arguments>
             <argument name="collectionProcessor" xsi:type="object">Hoan\Student\Model\Api\SearchCriteria\StudentCollectionProcessor</argument>
-            <!-- <argument name="hydrator" xsi:type="object">Magento\Framework\EntityManager\AbstractModelHydrator</argument> -->
         </arguments>
     </type>
 </config>

@@ -11,6 +11,9 @@
         "constraint": {
             "PRIMARY": true,
             "HOAN_STUDENT_STUDENT_ID": true
+        },
+        "index": {
+            "HOAN_STUDENT_STUDENT_NAME": true
         }
     }
 }
