@@ -22,5 +22,14 @@
         + create \Ui\Dataprovider\StudentDataProvider.php (for 'dataProvider' in student_listing.xml)
         + create \Ui\Component\Listing\Columns\StudentActions (for 'actionsColumn' in student_listing.xml)
         + create controllers for actionsColumn
+
+        + for inlineEdit you need:
+            - settings/editorConfig (columns)
+            - settings/childDefaults (columns)
+            - settings/editor (column)
+
+        + for filterSearch
+            - filterSearch in Ui Listing
+            - addFilter method in DataProvider class
     2. Form
 
