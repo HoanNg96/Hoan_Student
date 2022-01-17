@@ -18,4 +18,28 @@
             <argument name="collectionProcessor" xsi:type="object">Hoan\Student\Model\Api\SearchCriteria\StudentCollectionProcessor</argument>
         </arguments>
     </type>
+
+    <!-- create virtual class extend class SearchResult and pass argument -->
+    <virtualType name="StudentListing" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<!-- U can find some arguments in SearchResult class -->
+		<arguments>
+			<argument name="mainTable" xsi:type="string">hoan_student</argument> <!-- database table name -->
+			<argument name="resourceModel" xsi:type="string">Hoan\Student\Model\ResourceModel\Student\Collection</argument> <!-- ResourceModel Class -->
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="student_listing_data_source" xsi:type="string">StudentListing</item> <!-- virtual class above -->
+			</argument>
+		</arguments>
+	</type>
+
+    <type name="Hoan\Student\Ui\DataProvider\StudentDataProvider">
+        <arguments>
+            <argument name="additionalFilterPool" xsi:type="array">
+                <item name="fulltext" xsi:type="object">Hoan\Student\Ui\Component\Listing\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </type>
 </config>

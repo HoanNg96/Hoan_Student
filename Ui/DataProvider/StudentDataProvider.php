@@ -2,42 +2,66 @@
 
 namespace Hoan\Student\Ui\DataProvider;
 
-class StudentDataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
+use Magento\Framework\Api\Filter;
+use Magento\Framework\Api\FilterBuilder;
+use Magento\Framework\Api\Search\SearchCriteriaBuilder;
+use Magento\Framework\App\RequestInterface;
+use Magento\Framework\View\Element\UiComponent\DataProvider\Reporting;
+
+class StudentDataProvider extends \Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider
 {
     /**
-     * @param \Hoan\Student\Model\ResourceModel\Student\CollectionFactory
+     * @var AddFilterInterface[]
      */
-    protected $collection;
+    private $additionalFilterPool;
 
     /**
-     * @param string name
+     * @param string $name
      * @param string $primaryFieldName
      * @param string $requestFieldName
-     * @param \Hoan\Student\Model\ResourceModel\Student\CollectionFactory $collection
+     * @param Reporting $reporting
+     * @param SearchCriteriaBuilder $searchCriteriaBuilder
+     * @param RequestInterface $request
+     * @param FilterBuilder $filterBuilder
      * @param array $meta
      * @param array $data
+     * @param array $additionalFilterPool
      */
     public function __construct(
         $name,
         $primaryFieldName,
         $requestFieldName,
-        \Hoan\Student\Model\ResourceModel\Student\CollectionFactory $collectionFactory,
+        Reporting $reporting,
+        SearchCriteriaBuilder $searchCriteriaBuilder,
+        RequestInterface $request,
+        FilterBuilder $filterBuilder,
         array $meta = [],
-        array $data = []
+        array $data = [],
+        array $additionalFilterPool = []
     ) {
-        parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
-        $this->collection = $collectionFactory->create();
+        parent::__construct(
+            $name,
+            $primaryFieldName,
+            $requestFieldName,
+            $reporting,
+            $searchCriteriaBuilder,
+            $request,
+            $filterBuilder,
+            $meta,
+            $data
+        );
+        $this->additionalFilterPool = $additionalFilterPool;
     }
 
     /**
      * @inheritdoc
      */
-    public function addFilter(\Magento\Framework\Api\Filter $filter)
+    public function addFilter(Filter $filter)
     {
-        $this->collection->addFieldToFilter(['student_id', 'student_name'],
-            [
-                ['like' => '%' . $filter->getValue() . '%'],
-                ['like' => '%' . $filter->getValue() . '%']
-            ]);
+        if (!empty($this->additionalFilterPool[$filter->getField()])) {
+            $this->additionalFilterPool[$filter->getField()]->addFilter($this->searchCriteriaBuilder, $filter);
+        } else {
+            parent::addFilter($filter);
+        }
     }
 }
