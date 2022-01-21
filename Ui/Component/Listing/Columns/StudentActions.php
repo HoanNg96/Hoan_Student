@@ -12,7 +12,7 @@ class StudentActions extends \Magento\Ui\Component\Listing\Columns\Column
     /**
      * Url path
      */
-    const URL_PATH_EDIT = 'student/listing/edit';
+    const URL_PATH_EDIT = 'student/form/edit';
     const URL_PATH_DELETE = 'student/listing/delete';
 
     /**

@@ -4,7 +4,7 @@ namespace Hoan\Student\Controller\Adminhtml\Listing;
 
 class InlineEdit extends \Magento\Backend\App\Action
 {
-    const ADMIN_RESOURCE = 'Hoan_Student::inlineedit';
+    const ADMIN_RESOURCE = 'Hoan_Student::student';
 
     /**
      * @param \Magento\Framework\Controller\Result\JsonFactory

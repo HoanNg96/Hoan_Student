@@ -53,7 +53,7 @@ class Student extends \Magento\Framework\Model\AbstractModel implements \Hoan\St
      */
     public function getIdentities()
     {
-        return [self::CACHE_TAG . '_' . $this->getId()];
+        return [self::CACHE_TAG . '_' . $this->getStudentId()];
     }
 
     /**
@@ -69,11 +69,10 @@ class Student extends \Magento\Framework\Model\AbstractModel implements \Hoan\St
      * Set Student Id
      * 
      * @param int $studentId
-     * @return $this
+     * @return \Hoan\Student\Api\Data\StudentInterface
      */
     public function setStudentId($studentId) {
         $this->setData(self::STUDENT_ID, $studentId);
-        return $this;
     }
 
     /**
@@ -89,11 +88,10 @@ class Student extends \Magento\Framework\Model\AbstractModel implements \Hoan\St
      * Set Student Name
      * 
      * @param string $studentName
-     * @return $this
+     * @return \Hoan\Student\Api\Data\StudentInterface
      */
     public function setStudentName($studentName) {
         $this->setData(self::STUDENT_NAME, $studentName);
-        return $this;
     }
 
     /**
@@ -109,11 +107,10 @@ class Student extends \Magento\Framework\Model\AbstractModel implements \Hoan\St
      * Set Student Birthday
      * 
      * @param string $studentBirthday
-     * @return $this
+     * @return \Hoan\Student\Api\Data\StudentInterface
      */
     public function setStudentBirthday($studentBirthday) {
         $this->setData(self::STUDENT_BIRTHDAY, $studentBirthday);
-        return $this;
     }
 
     /**
@@ -148,11 +145,10 @@ class Student extends \Magento\Framework\Model\AbstractModel implements \Hoan\St
      * Set created at time
      *
      * @param string $createdAt
-     * @return $this
+     * @return \Hoan\Student\Api\Data\StudentInterface
      */
     public function setCreatedAt($createdAt) {
         $this->setData(self::CREATED_AT, $createdAt);
-        return $this;
     }
 
     /**
@@ -168,10 +164,9 @@ class Student extends \Magento\Framework\Model\AbstractModel implements \Hoan\St
      * Set updated at time
      *
      * @param string $updatedAt
-     * @return $this
+     * @return \Hoan\Student\Api\Data\StudentInterface
      */
     public function setUpdatedAt($updatedAt) {
         $this->setData(self::UPDATED_AT, $updatedAt);
-        return $this;
     }
 }

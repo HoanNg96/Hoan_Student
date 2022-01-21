@@ -14,13 +14,20 @@ class Index extends \Magento\Backend\App\Action
     protected $_pageFactory;
 
     /**
+     * @param \Magento\Framework\App\Request\DataPersistorInterface
+     */
+    private $dataPersistor;
+
+    /**
      * @param \Magento\Backend\App\Action\Context $context
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $pageFactory
+        \Magento\Framework\View\Result\PageFactory $pageFactory,
+        \Magento\Framework\App\Request\DataPersistorInterface $dataPersistor
     ) {
         $this->_pageFactory = $pageFactory;
+        $this->dataPersistor = $dataPersistor;
         return parent::__construct($context);
     }
 
@@ -36,6 +43,8 @@ class Index extends \Magento\Backend\App\Action
         $resultPage->setActiveMenu(static::ADMIN_RESOURCE);
         $resultPage->addBreadcrumb(__(static::PAGE_TITLE), __(static::PAGE_TITLE));
         $resultPage->getConfig()->getTitle()->prepend(__(static::PAGE_TITLE));
+
+        $this->dataPersistor->clear('student');
 
         return $resultPage;
     }

@@ -13,7 +13,7 @@
     + create \etc\adminhtml\routes.xml (router id="admin")
     + create \etc\adminhtml\menu.xml
     + create \Controller\Adminhtml\Listing\Index.php
-    + create view\adminhtml\layout\student_listing_index.xml (page tag not contain layout="" attribute)
+    + create view\adminhtml\layout\student_listing_index.xml (modify layout="" attribute for admin)
     + create Block\... and view\adminhtml\templates\... (if need)
 
 - Create UiComponent
@@ -24,12 +24,17 @@
         + create controllers for actionsColumn
 
         + for inlineEdit you need:
-            - settings/editorConfig (columns)
-            - settings/childDefaults (columns)
-            - settings/editor (column)
+            - settings/editorConfig (columns tag)
+            - settings/childDefaults (columns tag)
+            - settings/editor (column tag)
 
         + for filterSearch
-            - filterSearch in Ui Listing
+            - filterSearch tag in Ui Listing
             - addFilter method in DataProvider class
     2. Form
+        *Note: You can't use 2 templates (tab & collapsible) in the same form
+        + create \view\adminghhtml\ui_component\student_form.xml
+        + create \Ui\Dataprovider\StudentFormDataProvider.php (for 'dataProvider' in student_form.xml)
+        + create buttons (GenericButton first)
+        + create controllers
 

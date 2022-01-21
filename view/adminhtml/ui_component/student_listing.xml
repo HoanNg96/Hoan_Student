@@ -13,13 +13,14 @@
         </item>
     </argument>
     <settings>
+        <!-- must be equal to columns name -->
         <spinner>student_columns</spinner>
         <deps>
             <dep>student_listing.student_listing_data_source</dep>
         </deps>
         <buttons>
             <button name="add">
-                <url path="*/*/create"/>
+                <url path="*/form/create"/>
                 <class>primary</class>
                 <label translate="true">Add New Student</label>
             </button>
@@ -38,8 +39,8 @@
         <!-- class = PHP class to process data -->
         <dataProvider class="Hoan\Student\Ui\DataProvider\StudentDataProvider" name="student_listing_data_source">
             <settings>
-                <!-- enables the AJAX URL used by the grid -->
-                <requestFieldName>id</requestFieldName>
+                <!-- used when enable AJAX -->
+                <requestFieldName>student_id</requestFieldName>
                 <!-- primary key of database -->
                 <primaryFieldName>student_id</primaryFieldName>
             </settings>

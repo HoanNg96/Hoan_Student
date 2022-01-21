@@ -19,7 +19,7 @@
         </arguments>
     </type>
 
-    <!-- create virtual class extend class SearchResult and pass argument -->
+    <!-- create virtual class -->
     <virtualType name="StudentListing" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
 		<!-- U can find some arguments in SearchResult class -->
 		<arguments>
@@ -27,14 +27,17 @@
 			<argument name="resourceModel" xsi:type="string">Hoan\Student\Model\ResourceModel\Student\Collection</argument> <!-- ResourceModel Class -->
 		</arguments>
 	</virtualType>
+    <!-- declare the collection for Uicomto use -->
 	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
 		<arguments>
 			<argument name="collections" xsi:type="array">
-				<item name="student_listing_data_source" xsi:type="string">StudentListing</item> <!-- virtual class above -->
+                <!-- virtual class created above with name = data source -->
+				<item name="student_listing_data_source" xsi:type="string">StudentListing</item>
 			</argument>
 		</arguments>
 	</type>
 
+    <!-- for fulltext search Uicom -->
     <type name="Hoan\Student\Ui\DataProvider\StudentDataProvider">
         <arguments>
             <argument name="additionalFilterPool" xsi:type="array">
