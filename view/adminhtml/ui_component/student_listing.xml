@@ -19,6 +19,11 @@
             <dep>student_listing.student_listing_data_source</dep>
         </deps>
         <buttons>
+            <button name="new">
+                <url path="*/form/widget"/>
+                <class>primary</class>
+                <label translate="true">Widget Create Student</label>
+            </button>
             <button name="add">
                 <url path="*/form/create"/>
                 <class>primary</class>

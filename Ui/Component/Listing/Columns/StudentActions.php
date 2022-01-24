@@ -14,6 +14,7 @@ class StudentActions extends \Magento\Ui\Component\Listing\Columns\Column
      */
     const URL_PATH_EDIT = 'student/form/edit';
     const URL_PATH_DELETE = 'student/listing/delete';
+    const URL_PATH_WIDGET_FORM = 'student/form/widget';
 
     /**
      * @var UrlInterface
@@ -76,6 +77,15 @@ class StudentActions extends \Magento\Ui\Component\Listing\Columns\Column
                             ],
                             'post' => true,
                         ],
+                        'widget' => [
+                            'href' => $this->urlBuilder->getUrl(
+                                static::URL_PATH_WIDGET_FORM,
+                                [
+                                    'student_id' => $item['student_id'],
+                                ]
+                            ),
+                            'label' => __('Widget Edit'),
+                        ]
                     ];
                 }
             }

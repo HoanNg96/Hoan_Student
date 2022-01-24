@@ -7,7 +7,7 @@
     + Create Collection Class (Model\ResourceModel\Student\Collection.php)
     + Create Repository Class (Model\StudentRepository.php)
     + Create SearchResult Class (Model\StudentSearchResults.php)
-    + Define Preference Mapping (etc\di.xml)
+    + Define Preference Mapping & collectionProcessor (etc\di.xml)
 
 - Create new admin page:
     + create \etc\adminhtml\routes.xml (router id="admin")
@@ -31,10 +31,21 @@
         + for filterSearch
             - filterSearch tag in Ui Listing
             - addFilter method in DataProvider class
+            - collectionProcessor
+            - collectionFactory (di.xml)
     2. Form
-        *Note: You can't use 2 templates (tab & collapsible) in the same form
+        *Note: You can't use 2 templates (tab & collapsible) in the same ui form
+        + create controller (edit)
         + create \view\adminghhtml\ui_component\student_form.xml
         + create \Ui\Dataprovider\StudentFormDataProvider.php (for 'dataProvider' in student_form.xml)
         + create buttons (GenericButton first)
-        + create controllers
+        + create controller (save)
+
+        *multi-tab widget form
+        + create controller (widget)
+        + create layout (2-columns-left)
+        + create \Block\Adminhtml\Student\Form\Edit\Form.php (declare main form)
+        + create \Block\Adminhtml\Student\Form\Edit\Tabs.php (declare tabs)
+        + create \Block\Adminhtml\Student\Form\Edit\Tab\... (add fields to main form in each tab)
+        + create controller (save)
 

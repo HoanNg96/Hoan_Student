@@ -52,7 +52,7 @@ class Save extends \Magento\Backend\App\Action
     {
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
-        // get data from uicomponent form
+        // get data from uicomponent form or widget block
         $data = $this->getRequest()->getPostValue();
         if ($data) {
             if (empty($data['student_id'])) {
@@ -66,16 +66,6 @@ class Save extends \Magento\Backend\App\Action
             if ($studentId) {
                 try {
                     $model = $this->studentRepository->getById($studentId);
-                    // updated time only if data change
-                    $oldData = $model->getData();
-                    $newData = $data;
-                    array_splice($newData, -2);
-                    $oldData['student_birthday'] = strtotime($oldData['student_birthday']);
-                    $newData['student_birthday'] = strtotime($newData['student_birthday']);
-                    $diff = array_diff($oldData, $newData);
-                    if(!empty($diff)) {
-                        $data['updated_at'] = time();
-                    }
                 } catch (LocalizedException $e) {
                     $this->messageManager->addErrorMessage(__('This student no longer exists.'));
                     return $resultRedirect->setPath('*/listing/');
@@ -83,6 +73,7 @@ class Save extends \Magento\Backend\App\Action
             }
 
             $model->setData($data);
+            $model->setUpdatedAt(time());
 
             try {
                 $this->studentRepository->save($model);

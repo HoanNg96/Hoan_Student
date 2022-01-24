@@ -2,9 +2,11 @@
 
 namespace Hoan\Student\Controller\Adminhtml\Form;
 
-class Edit extends \Magento\Backend\App\Action
+use Magento\Framework\App\Action\HttpGetActionInterface;
+
+class Widget extends \Magento\Backend\App\Action implements HttpGetActionInterface
 {
-    const ADMIN_RESOURCE = 'Hoan_Student::edit';
+    const ADMIN_RESOURCE = 'Hoan_Student::widget';
 
     /**
      * @var \Magento\Framework\View\Result\PageFactory
@@ -12,14 +14,14 @@ class Edit extends \Magento\Backend\App\Action
     protected $_pageFactory;
 
     /**
-     * @param \Magento\Framework\Registry
-     */
-    private $coreRegistry;
-
-    /**
      * @param \Hoan\Student\Model\StudentFactory
      */
     private $studentFactory;
+
+    /**
+     * @param \Magento\Framework\Registry
+     */
+    private $coreRegistry;
 
     /**
      * @param \Magento\Backend\App\Action\Context $context
@@ -27,12 +29,12 @@ class Edit extends \Magento\Backend\App\Action
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $pageFactory,
-        \Magento\Framework\Registry $coreRegistry,
-        \Hoan\Student\Model\StudentFactory $studentFactory
+        \Hoan\Student\Model\StudentFactory $studentFactory,
+        \Magento\Framework\Registry $coreRegistry
     ) {
         $this->_pageFactory = $pageFactory;
-        $this->coreRegistry = $coreRegistry;
         $this->studentFactory = $studentFactory;
+        $this->coreRegistry = $coreRegistry;
         return parent::__construct($context);
     }
 
@@ -56,6 +58,9 @@ class Edit extends \Magento\Backend\App\Action
                 return $resultRedirect->setPath('*/listing/');
             }
         }
+
+        // data for Block\Adminhtml\Student\Form\Edit\Form
+        $this->coreRegistry->register('student_data', $student);
 
         /** @var \Magento\Framework\View\Result\Page $resultPage */
         $resultPage = $this->_pageFactory->create();
