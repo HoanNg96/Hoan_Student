@@ -143,9 +143,12 @@
                 <label translate="true">Date Of Birth</label>
             </settings>
         </column>
-        <column name="student_img" sortOrder="40">
+        <column name="thumbnail" component="Magento_Ui/js/grid/columns/thumbnail" class="Hoan\Student\Ui\Component\Listing\Columns\Thumbnail" sortOrder="40">
             <settings>
+                <hasPreview>1</hasPreview>
+                <!-- <addField>true</addField> -->
                 <label translate="true">Student Image</label>
+                <sortable>false</sortable>
             </settings>
         </column>
         <column name="created_at" sortOrder="50" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">

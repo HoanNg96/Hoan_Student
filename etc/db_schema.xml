@@ -4,7 +4,7 @@
         <column xsi:type="int" name="student_id" padding="11" unsigned="false" nullable="false" identity="true" comment="Student Id"/>
         <column xsi:type="varchar" name="student_name" nullable="false" comment="Student Name"/>
         <column xsi:type="date" name="student_birthday" nullable="false" comment="Student Birthday"/>
-        <column xsi:type="varchar" name="student_img" nullable="true" default="" comment="Student Image"/>
+        <column xsi:type="text" name="student_img" nullable="true" comment="Student Image"/>
         <column xsi:type="timestamp" name="created_at" nullable="true" default="CURRENT_TIMESTAMP" comment="Created At"/>
         <column xsi:type="timestamp" name="updated_at" nullable="true" default="CURRENT_TIMESTAMP" comment="Updated At"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">

@@ -24,6 +24,11 @@ class Save extends \Magento\Backend\App\Action
     private $studentRepository;
 
     /**
+     * @param \Hoan\Student\Model\ImageUploader
+     */
+    private $imageUploader;
+
+    /**
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\App\Request\DataPersistorInterface $dataPersistor
      * @param \Hoan\Student\Model\StudentFactory|null $studentFactory
@@ -32,10 +37,12 @@ class Save extends \Magento\Backend\App\Action
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\App\Request\DataPersistorInterface $dataPersistor,
+        \Hoan\Student\Model\ImageUploader $imageUploader,
         \Hoan\Student\Model\StudentFactory $studentFactory = null,
         \Hoan\Student\Api\StudentRepositoryInterface $studentRepository = null
     ) {
         $this->dataPersistor = $dataPersistor;
+        $this->imageUploader = $imageUploader;
         $this->studentFactory = $studentFactory
             ?: \Magento\Framework\App\ObjectManager::getInstance()->get(\Hoan\Student\Model\StudentFactory::class);;
         $this->studentRepository = $studentRepository
@@ -72,6 +79,33 @@ class Save extends \Magento\Backend\App\Action
                 }
             }
 
+            // process uploaded image
+            if (isset($data['student_img'][0]['name'])) {
+                // check if new image was upload
+                if (isset($data['student_img'][0]['tmp_name'])) {
+                    // move image from tmpDir to mainDir
+                    /** @var \Hoan\Student\Model\ImageUploader $this->imageUploader */
+                    $this->imageUploader->moveFileFromTmp($data['student_img'][0]['name']);
+
+                    // convert image data before save to database
+                    $strpos = strpos($data['student_img'][0]['url'], '/media/');
+                    $data['student_img'][0]['url'] = substr($data['student_img'][0]['url'], $strpos + 6);
+                    $data['student_img'][0]['url'] = trim($data['student_img'][0]['url'], '/');
+                    $data['student_img'][0]['url'] = str_replace("/tmp/", "/", $data['student_img'][0]['url']);
+                    unset($data['student_img'][0]['error']);
+                    unset($data['student_img'][0]['tmp_name']);
+                    unset($data['student_img'][0]['id']);
+                    unset($data['student_img'][0]['file']);
+                    unset($data['student_img'][0]['previewType']);
+                    $data['student_img'] = json_encode($data['student_img']);
+                } else {
+                    unset($data['student_img']);
+                }
+            } else {
+                $data['student_img'] = "";
+            }
+
+            // save new data
             $model->setData($data);
             $model->setUpdatedAt(time());
 

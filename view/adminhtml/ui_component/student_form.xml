@@ -69,5 +69,24 @@
                 <dataScope>student_birthday</dataScope>
             </settings>
         </field>
+        <field name="image" formElement="imageUploader">
+            <settings>
+                <notice translate="true">this is the notice</notice>
+                <label translate="true">Student Image</label>
+                <componentType>imageUploader</componentType>
+                <dataScope>student_img</dataScope>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <maxFileSize>2097152</maxFileSize>
+                        <uploaderConfig>
+                            <!-- controller process upload : frontName/controller folders separeted by "_"/action -->
+                            <param xsi:type="string" name="url">student/form_image/upload</param>
+                        </uploaderConfig>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
     </fieldset>
 </form>

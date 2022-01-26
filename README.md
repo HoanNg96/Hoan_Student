@@ -23,7 +23,7 @@
         + create \Ui\Component\Listing\Columns\StudentActions (for 'actionsColumn' in student_listing.xml)
         + create controllers for actionsColumn
 
-        + for inlineEdit you need:
+        + for inlineEdit
             - settings/editorConfig (columns tag)
             - settings/childDefaults (columns tag)
             - settings/editor (column tag)
@@ -33,6 +33,12 @@
             - addFilter method in DataProvider class
             - collectionProcessor
             - collectionFactory (di.xml)
+        
+        + for thumbnail
+            - thumbnail comlumn in ui listing
+            - helper to get image path (Helper\Image.php)
+            - component for column (Ui\Listing\Columns\Thumbnail.php)
+
     2. Form
         *Note: You can't use 2 templates (tab & collapsible) in the same ui form
         + create controller (edit)
@@ -49,3 +55,10 @@
         + create \Block\Adminhtml\Student\Form\Edit\Tab\... (add fields to main form in each tab)
         + create controller (save)
 
+        *imageupload
+        + add field to ui form
+        + pass more config argument by di.xml
+        + create model for upload (Model\ImageUploader.php)
+        + create controller for upload (Adminhtml\Form\Image\Upload.php) - to upload file to tmpDir
+        + modify save conntroller of ui form - to move file from tmpDir to mainDir
+        + modify dataprovider to see preview-image when edit

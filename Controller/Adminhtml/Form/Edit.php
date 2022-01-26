@@ -12,11 +12,6 @@ class Edit extends \Magento\Backend\App\Action
     protected $_pageFactory;
 
     /**
-     * @param \Magento\Framework\Registry
-     */
-    private $coreRegistry;
-
-    /**
      * @param \Hoan\Student\Model\StudentFactory
      */
     private $studentFactory;
@@ -27,11 +22,9 @@ class Edit extends \Magento\Backend\App\Action
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $pageFactory,
-        \Magento\Framework\Registry $coreRegistry,
         \Hoan\Student\Model\StudentFactory $studentFactory
     ) {
         $this->_pageFactory = $pageFactory;
-        $this->coreRegistry = $coreRegistry;
         $this->studentFactory = $studentFactory;
         return parent::__construct($context);
     }
