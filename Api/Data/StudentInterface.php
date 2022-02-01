@@ -66,6 +66,7 @@ interface StudentInterface
      * Set Student Image
      * 
      * @param string $studentImg
+     * @return $this
      */
     public function setStudentImg($studentImg);
 

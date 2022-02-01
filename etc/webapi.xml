@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- api url and api method -->
+    <route url="/V1/student/" method="GET">
+        <!-- class and method in class -->
+        <service class="Hoan\Student\Api\StudentRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <!-- student_id is the argument for method -->
+    <route url="/V1/student/:student_id" method="GET">
+        <!-- getById is the method -->
+        <service class="Hoan\Student\Api\StudentRepositoryInterface" method="getById"/>
+        <!-- acl -->
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>

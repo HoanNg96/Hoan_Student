@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="standard">
+        <!-- id is for layout file's name, frontName for URL -->
         <route id="student" frontName="student">
             <module name="Hoan_Student" />
         </route>

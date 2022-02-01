@@ -1,4 +1,5 @@
 <?php
+
 namespace Hoan\Student\Model;
 
 class Student extends \Magento\Framework\Model\AbstractModel implements \Hoan\Student\Api\Data\StudentInterface
@@ -61,7 +62,8 @@ class Student extends \Magento\Framework\Model\AbstractModel implements \Hoan\St
      * 
      * @return int|null
      */
-    public function getStudentId() {
+    public function getStudentId()
+    {
         return $this->getData(self::STUDENT_ID);
     }
 
@@ -71,7 +73,8 @@ class Student extends \Magento\Framework\Model\AbstractModel implements \Hoan\St
      * @param int $studentId
      * @return \Hoan\Student\Api\Data\StudentInterface
      */
-    public function setStudentId($studentId) {
+    public function setStudentId($studentId)
+    {
         $this->setData(self::STUDENT_ID, $studentId);
     }
 
@@ -80,17 +83,19 @@ class Student extends \Magento\Framework\Model\AbstractModel implements \Hoan\St
      * 
      * @return string|null
      */
-    public function getStudentName() {
+    public function getStudentName()
+    {
         return $this->getData(self::STUDENT_NAME);
     }
-    
+
     /**
      * Set Student Name
      * 
      * @param string $studentName
      * @return \Hoan\Student\Api\Data\StudentInterface
      */
-    public function setStudentName($studentName) {
+    public function setStudentName($studentName)
+    {
         $this->setData(self::STUDENT_NAME, $studentName);
     }
 
@@ -99,7 +104,8 @@ class Student extends \Magento\Framework\Model\AbstractModel implements \Hoan\St
      * 
      * @return string|null
      */
-    public function getStudentBirthday() {
+    public function getStudentBirthday()
+    {
         return $this->getData(self::STUDENT_BIRTHDAY);
     }
 
@@ -109,7 +115,8 @@ class Student extends \Magento\Framework\Model\AbstractModel implements \Hoan\St
      * @param string $studentBirthday
      * @return \Hoan\Student\Api\Data\StudentInterface
      */
-    public function setStudentBirthday($studentBirthday) {
+    public function setStudentBirthday($studentBirthday)
+    {
         $this->setData(self::STUDENT_BIRTHDAY, $studentBirthday);
     }
 
@@ -118,16 +125,19 @@ class Student extends \Magento\Framework\Model\AbstractModel implements \Hoan\St
      * 
      * @return string|null
      */
-    public function getStudentImg() {
+    public function getStudentImg()
+    {
         return $this->getData(self::STUDENT_IMG);
     }
-    
+
     /**
      * Set Student Image
      * 
      * @param string $studentImg
+     * @return \Hoan\Student\Api\Data\StudentInterface
      */
-    public function setStudentImg($studentImg) {
+    public function setStudentImg($studentImg)
+    {
         $this->setData(self::STUDENT_IMG, $studentImg);
         return $this;
     }
@@ -137,7 +147,8 @@ class Student extends \Magento\Framework\Model\AbstractModel implements \Hoan\St
      *
      * @return string|null
      */
-    public function getCreatedAt() {
+    public function getCreatedAt()
+    {
         return $this->getData(self::CREATED_AT);
     }
 
@@ -147,7 +158,8 @@ class Student extends \Magento\Framework\Model\AbstractModel implements \Hoan\St
      * @param string $createdAt
      * @return \Hoan\Student\Api\Data\StudentInterface
      */
-    public function setCreatedAt($createdAt) {
+    public function setCreatedAt($createdAt)
+    {
         $this->setData(self::CREATED_AT, $createdAt);
     }
 
@@ -156,7 +168,8 @@ class Student extends \Magento\Framework\Model\AbstractModel implements \Hoan\St
      *
      * @return string|null
      */
-    public function getUpdatedAt() {
+    public function getUpdatedAt()
+    {
         return $this->getData(self::UPDATED_AT);
     }
 
@@ -166,7 +179,8 @@ class Student extends \Magento\Framework\Model\AbstractModel implements \Hoan\St
      * @param string $updatedAt
      * @return \Hoan\Student\Api\Data\StudentInterface
      */
-    public function setUpdatedAt($updatedAt) {
+    public function setUpdatedAt($updatedAt)
+    {
         $this->setData(self::UPDATED_AT, $updatedAt);
     }
 }
