@@ -5,6 +5,14 @@
     <preference for="Hoan\Student\Api\Data\StudentSearchResultsInterface" type="Hoan\Student\Model\StudentSearchResults" />
     <preference for="Hoan\Student\Api\StudentRepositoryInterface" type="Hoan\Student\Model\StudentRepository" />
 
+    <type name="Magento\Framework\Model\Entity\RepositoryFactory">
+        <arguments>
+            <argument name="entities" xsi:type="array">
+                <item name="Hoan\Student\Api\Data\StudentInterface" xsi:type="string">Hoan\Student\Api\StudentRepositoryInterface</item>
+            </argument>
+        </arguments>
+    </type>
+
     <virtualType name="Hoan\Student\Model\Api\SearchCriteria\StudentCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
         <arguments>
             <argument name="processors" xsi:type="array">
