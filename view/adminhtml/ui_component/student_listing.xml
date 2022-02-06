@@ -119,6 +119,11 @@
                 <label translate="true">Student Id</label>
             </settings>
         </column>
+        <column name="student_status" class="Hoan\Student\Ui\Component\Listing\Columns\StudentStatus" sortOrder="15">
+            <settings>
+                <label translate="true">Status</label>
+            </settings>
+        </column>
         <column name="student_name" sortOrder="20">
             <settings>
                 <filter>text</filter>

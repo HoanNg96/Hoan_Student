@@ -24,7 +24,12 @@
         echo "<td>" . $block->escapeHtml(__($student->getStudentId())) . "</td>";
         echo "<td>" . $block->escapeHtml(__($student->getStudentName())) . "</td>";
         echo "<td>" . $block->escapeHtml(__(date('Y-m-d', strtotime($student->getStudentBirthday())))) . "</td>";
-        echo "<td>" . $block->escapeHtml(__($student->getStudentImg())) . "</td>";
+        $studentImg = json_decode($student->getStudentImg());
+        if ($studentImg == null || $studentImg == "") :
+            echo "<td></td>";
+        else :
+            echo '<td><a href=pub/media/' . $studentImg[0]->url . '><img style="width: 75px; height: 75px;" src="' . $block->getBaseUrl() . "pub/media/student/image/" . $studentImg[0]->name . '" alt="student-image"></a></td>';
+        endif;
         echo "<td>" . $block->escapeHtml(__($student->getCreatedAt())) . "</td>";
         echo "<td>" . $block->escapeHtml(__($student->getUpdatedAt())) . "</td>";
         echo '<td><a href="' . $block->escapeHtml(__($block->getBaseUrl())) . 'student/index/edit/student_id/' .

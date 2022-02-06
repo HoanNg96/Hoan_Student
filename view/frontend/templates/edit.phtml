@@ -5,7 +5,7 @@ $student = $block->getCurrentStudent();
 ?>
 
 <h3 style="text-align: center;">Edit</h3>
-<form method='POST' action="<?= $block->escapeHtml($block->getBaseUrl()); ?>student/index/save">
+<form method='POST' action="<?= $block->escapeHtml($block->getBaseUrl()); ?>student/index/save" enctype="multipart/form-data">
     <div class="form-group">
         <label for="name">Name</label>
         <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" value="<?php if ($student->getStudentName()) :
@@ -20,12 +20,10 @@ $student = $block->getCurrentStudent();
                                                                                                         endif; ?>">
     </div>
     <br>
-    <div class="form-group">
-        <label for="image">Image</label>
-        <input type="text" class="form-control" id="image" placeholder="Enter image" name="image" value="<?php if ($student->getStudentImg()) :
-                                                                                                                    echo $block->escapeHtml($student->getStudentImg());
-                                                                                                                endif; ?>">
-    </div>
+    <!-- <div class="form-group">
+        <label for="image" style="display: block;">Image</label>
+        <input type="file" class="form-control" id="image" name="image">
+    </div> -->
     <br>
     <button type="submit" class="btn btn-primary" name="editbtn" value="<?php if ($student->getStudentId()) :
                                                                             echo $block->escapeHtml($student->getStudentId());

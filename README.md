@@ -62,3 +62,9 @@
         + create controller for upload (Adminhtml\Form\Image\Upload.php) - to upload file to tmpDir
         + modify save conntroller of ui form - to move file from tmpDir to mainDir
         + modify dataprovider to see preview-image when edit
+
+    3. Add custom column
+        + add column to database (if need)
+        + add column to ui listing
+        + create class for column with prepareDataSource method
+        + delete ui_bookmark database record to update sortOrder (if need)

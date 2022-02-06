@@ -53,6 +53,8 @@ class StudentActions extends \Magento\Ui\Component\Listing\Columns\Column
             foreach ($dataSource['data']['items'] as & $item) {
                 if (isset($item['student_id'])) {
                     $studentName = $this->getEscaper()->escapeHtmlAttr($item['student_name']);
+                    // getData('name') to get column name (ui listing)
+                    // $item[$this->getData('name')] = to set data for column
                     $item[$this->getData('name')] = [
                         'edit' => [
                             'href' => $this->urlBuilder->getUrl(

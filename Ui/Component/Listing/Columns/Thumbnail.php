@@ -75,7 +75,7 @@ class Thumbnail extends \Magento\Ui\Component\Listing\Columns\Column
                     $item[$fieldName . '_orig_src'] = $this->imageHelper->getBaseImageUrl() . $imageData[0]['url'];
                 }
                 $item[$fieldName . '_link'] = $this->urlBuilder->getUrl(
-                    'student/form/edit',
+                    \Hoan\Student\Ui\Component\Listing\Columns\StudentActions::URL_PATH_EDIT,
                     [\Hoan\Student\Api\Data\StudentInterface::STUDENT_ID => $student->getStudentId(), 'store' => $this->context->getRequestParam('store')]
                 );
             }
